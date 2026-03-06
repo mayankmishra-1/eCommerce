@@ -98,7 +98,7 @@ const OrderHistory = () => {
       fetchOrders();
     } catch (error) {
       if (error.response?.status === 403) {
-        alert("Admins Only, Please Use Admin Token");
+        alert("Users Only, Please Use USER Token");
         navigate(-1);
       } else {
         console.error(error);

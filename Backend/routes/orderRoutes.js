@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post("/checkout", authenticate, checkout);
 
-router.put("/orders/cancel", authenticate, cancelOrder);
-router.get("/orders", authenticate, allowRole('ADMIN'), getOrders);
+router.put("/orders/cancel", authenticate, allowRole("USER"), cancelOrder);
+router.get("/orders", authenticate, allowRole('ADMIN','USER'), getOrders);
 router.put("/orders/status", authenticate, allowRole("ADMIN"), updateOrderStatus);
 
 export default router;
