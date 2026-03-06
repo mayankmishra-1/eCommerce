@@ -1,0 +1,88 @@
+/* Container */
+.admin-panel {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.admin-panel h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+/* Create product form */
+.admin-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.admin-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.admin-form button {
+  padding: 10px 20px;
+  background-color: #2d9cdb;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-form button:hover {
+  background-color: #2384c7;
+}
+
+/* Product list */
+.product-item {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.product-item p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.product-item input {
+  width: 100px;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+}
+
+.product-item button {
+  padding: 6px 12px;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.product-item button:hover {
+  background-color: #219150;
+}

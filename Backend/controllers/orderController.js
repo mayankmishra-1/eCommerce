@@ -121,10 +121,11 @@ export const cancelOrder = async (req, res) => {
 export const getOrders = async (req, res) => {
     try {
         let orders;
+        const sortByLatest = { createdAt: -1 };
         if (req.user.role === "ADMIN") {
-            orders = await Order.find().populate("items.productId");
+            orders = await Order.find().populate("items.productId").sort(sortByLatest);
         } else {
-            orders = await Order.find({ userId: req.user.id }).populate("items.productId");
+            orders = await Order.find({ userId: req.user.id }).populate("items.productId").sort(sortByLatest);;
         }
         res.json(orders);
     } catch (err) {

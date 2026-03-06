@@ -1,13 +1,110 @@
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import API from "../api/api";
+
+// const CartPage = () => {
+
+//     const [cart, setCart] = useState({ items: [] });
+//     const navigate = useNavigate();
+
+//     const fetchCart = async () => {
+//     try {
+//       const res = await API.get("/cart");
+//       setCart(res.data);
+//     } catch (error) {
+//       if (error.response?.status === 403) {
+//         alert("Users Only, Please Use User Token");
+//         navigate(-1);
+//       } else {
+//         console.error(error);
+//         alert("Something went wrong while fetching cart");
+//       }
+//     }
+//   };
+
+//     const updateQty = async (productId, qty) => {
+
+//         await API.put("/cart/update", {
+//             productId,
+//             quantity: qty
+//         });
+
+//         fetchCart();
+//     };
+
+//     const removeItem = async (productId) => {
+
+//         await API.delete("/cart/remove", {
+//             data: { productId }
+//         });
+
+//         fetchCart();
+//     };
+
+//     const checkout = async () => {
+
+//         await API.post("/checkout", {
+//             idempotencyKey: Date.now().toString()
+//         });
+
+//         alert("Order placed");
+
+//         fetchCart();
+//     };
+
+//     useEffect(() => {
+//         fetchCart();
+//     }, []);
+
+//     return (
+//         <div>
+
+//             <h1>Cart</h1>
+
+//             {cart.items.map(item => (
+
+//                 <div key={item.productId._id}>
+
+//                     <p>{item.productId.name}</p>
+
+//                     <input
+//                         type="number"
+//                         value={item.quantity}
+//                         onChange={(e) =>
+//                             updateQty(item.productId._id, e.target.value)
+//                         }
+//                     />
+
+//                     <button onClick={() => removeItem(item.productId._id)}>
+//                         Remove
+//                     </button>
+
+//                 </div>
+
+//             ))}
+
+//             <button onClick={checkout}>
+//                 Checkout
+//             </button>
+
+//         </div>
+//     );
+// };
+
+// export default CartPage;
+
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/api";
+import "../css/CartPage.css"; // import the CSS
 
 const CartPage = () => {
+  const [cart, setCart] = useState({ items: [] });
+  const navigate = useNavigate();
 
-    const [cart, setCart] = useState({ items: [] });
-    const navigate = useNavigate();
-
-    const fetchCart = async () => {
+  // Fetch cart
+  const fetchCart = async () => {
     try {
       const res = await API.get("/cart");
       setCart(res.data);
@@ -22,73 +119,85 @@ const CartPage = () => {
     }
   };
 
-    const updateQty = async (productId, qty) => {
+  // Update quantity
+  const updateQty = async (productId, qty) => {
+    try {
+      await API.put("/cart/update", { productId, quantity: qty });
+      fetchCart();
+    } catch (error) {
+      if (error.response?.status === 403) {
+        alert("Users Only, Please Use User Token");
+        navigate(-1);
+      } else {
+        console.error(error);
+        alert("Something went wrong while updating quantity");
+      }
+    }
+  };
 
-        await API.put("/cart/update", {
-            productId,
-            quantity: qty
-        });
+  // Remove item
+  const removeItem = async (productId) => {
+    try {
+      await API.delete("/cart/remove", { data: { productId } });
+      fetchCart();
+    } catch (error) {
+      if (error.response?.status === 403) {
+        alert("Users Only, Please Use User Token");
+        navigate(-1);
+      } else {
+        console.error(error);
+        alert("Something went wrong while removing item");
+      }
+    }
+  };
 
-        fetchCart();
-    };
+  // Checkout
+  const checkout = async () => {
+    try {
+      await API.post("/checkout", { idempotencyKey: Date.now().toString() });
+      alert("Order placed");
+      fetchCart();
+    } catch (error) {
+      if (error.response?.status === 403) {
+        alert("Users Only, Please Use User Token");
+        navigate(-1);
+      } else {
+        console.error(error);
+        alert("Something went wrong during checkout");
+      }
+    }
+  };
 
-    const removeItem = async (productId) => {
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
-        await API.delete("/cart/remove", {
-            data: { productId }
-        });
+  return (
+    <div className="cart-page">
+      <h1>Cart</h1>
 
-        fetchCart();
-    };
+      {cart.items.map((item) => (
+        <div key={item.productId._id} className="cart-item">
+          <div>
+            <p>{item.productId.name}</p>
+          </div>
 
-    const checkout = async () => {
-
-        await API.post("/checkout", {
-            idempotencyKey: Date.now().toString()
-        });
-
-        alert("Order placed");
-
-        fetchCart();
-    };
-
-    useEffect(() => {
-        fetchCart();
-    }, []);
-
-    return (
-        <div>
-
-            <h1>Cart</h1>
-
-            {cart.items.map(item => (
-
-                <div key={item.productId._id}>
-
-                    <p>{item.productId.name}</p>
-
-                    <input
-                        type="number"
-                        value={item.quantity}
-                        onChange={(e) =>
-                            updateQty(item.productId._id, e.target.value)
-                        }
-                    />
-
-                    <button onClick={() => removeItem(item.productId._id)}>
-                        Remove
-                    </button>
-
-                </div>
-
-            ))}
-
-            <button onClick={checkout}>
-                Checkout
-            </button>
-
+          <div>
+            <input
+              type="number"
+              value={item.quantity}
+              onChange={(e) => updateQty(item.productId._id, e.target.value)}
+            />
+            <button onClick={() => removeItem(item.productId._id)}>Remove</button>
+          </div>
         </div>
-    );
+      ))}
+
+      <button className="checkout-btn" onClick={checkout}>
+        Checkout
+      </button>
+    </div>
+  );
 };
 
 export default CartPage;
