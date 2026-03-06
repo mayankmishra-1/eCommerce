@@ -1,0 +1,437 @@
+{
+  "info": {
+    "_postman_id": "9a97c2b4-fb85-4c52-972c-5715ffc3ede4",
+    "name": "eCommerce",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49779491",
+    "_collection_link": "https://go.postman.co/collection/49779491-9a97c2b4-fb85-4c52-972c-5715ffc3ede4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "addProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWY3YzJhOWYxYjJjMDAxMjM0NTY3OCIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiQURNSU4ifQ.xd_V9k_Or5fOmz2w5Ks4uRqaG0jHVL9-FPiiNHsTwwg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"name\":\"iPhone 11\",\r\n\"price\":97000,\r\n\"stock\":20\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/product",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateStock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWY3YzJhOWYxYjJjMDAxMjM0NTY3OCIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiQURNSU4ifQ.xd_V9k_Or5fOmz2w5Ks4uRqaG0jHVL9-FPiiNHsTwwg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"productId\":\"69aab39f17c54ac19bd62585\",\r\n\"stock\":100\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/product/stock",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "product",
+                "stock"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getProduct",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/product",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "product"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "addToCart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"productId\":\"69aa5bdc76992eb2da251150\",\r\n\"quantity\":2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/cart/add",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "cart",
+                "add"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateCart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"productId\":\"69aa5bdc76992eb2da251150\",\r\n\"quantity\":3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/cart/update",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "cart",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteCartItem",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"productId\":\"69aa5bdc76992eb2da251150\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/cart/remove",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "cart",
+                "remove"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCart",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/cart",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "checkout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"idempotencyKey\": \"abc123uniqueorderkey\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/checkout",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "checkout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getOrders",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWY3YzJhOWYxYjJjMDAxMjM0NTY3OCIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiQURNSU4ifQ.xd_V9k_Or5fOmz2w5Ks4uRqaG0jHVL9-FPiiNHsTwwg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/orders",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancelOrder",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MWY3YzJhOWYxYjJjMDAxMjM0NTY3NyIsImVtYWlsIjoidXNlckB0ZXN0LmNvbSIsInJvbGUiOiJVU0VSIn0.WxhpSrNuOeyoudiR0X37dah8LVgs6gCXLgJhk0ysowQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"orderId\": \"69aa78cfd30b77ec8a70d56c\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/orders/cancel",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "changeStatus",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWY3YzJhOWYxYjJjMDAxMjM0NTY3OCIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiQURNSU4ifQ.xd_V9k_Or5fOmz2w5Ks4uRqaG0jHVL9-FPiiNHsTwwg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"orderId\": \"69aa78cfd30b77ec8a70d56c\",\r\n  \"status\":\"FAILED\" //[\"PENDING\",\"CONFIRMED\",\"SHIPPED\",\"DELIVERED\",\"CANCELLED\",\"FAILED\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseUrl}}/orders/status",
+              "host": [
+                "{{BaseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BaseUrl",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
