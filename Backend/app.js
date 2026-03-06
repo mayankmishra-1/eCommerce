@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 
-// import connectDB from "./config/db.js";
+import connectDB from "./config/db.js";
 
-// import productRoutes from "./routes/productRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 // import cartRoutes from "./routes/cartRoutes.js";
 // import orderRoutes from "./routes/orderRoutes.js";
 
@@ -15,9 +15,9 @@ const app = express();
 
 app.use(express.json());
 
-// connectDB();
+connectDB();
 
-// app.use("/api", productRoutes);
+app.use("/api", productRoutes);
 // app.use("/api", cartRoutes);
 // app.use("/api", orderRoutes);
 
